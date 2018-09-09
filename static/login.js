@@ -10,7 +10,7 @@ buton.onclick = function(){
   password: document.getElementById("password").value,
   }
 
-	fetch("/api/v2/auth/login", {
+	fetch("https://kevin-diary-v2.herokuapp.com/api/v2/auth/login", {
         method: 'POST',
         headers: {
           "Content-Type": "application/json"
