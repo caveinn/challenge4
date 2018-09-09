@@ -13,8 +13,10 @@ buton.onclick = function(){
 
 	fetch("https://kevin-diary-v2.herokuapp.com/api/v2/auth/signup", {
         method: 'POST',
+        mode: "cors",
         headers: {
           "Content-Type": "application/json"
+          
         },
         body: JSON.stringify(user)
       })
