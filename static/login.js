@@ -17,22 +17,14 @@ buton.onclick = function(){
         },
         body: JSON.stringify(user)
       })
-      .then(res => res.json())
-
-      .then(data => {
-        document.getElementById("message").innerHTML = data.message;
-        console.log(data)
-        if (data.message === "Your account was created") {
-          let msg = data.message;
-          document.getElementById("message").innerHTML = msg;
-          window.location.href = "/login";
-        } else {
-          let msg = Object.values(data);
-          console.log(msg)
-          document.getElementById("message").innerHTML = msg;
-          setTimeout(() => {document.getElementById("message").innerHTML = "";}, 5000);
-
+      .then((res) =>{
+        if(res.ok){
+          return res.json();
         }
+      })
+      .then((data) => {
+        localStorage.setItem("token", data.token) ;
+        window.location = "home.html";
 
       })
       // catch error that may occur

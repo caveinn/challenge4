@@ -1,4 +1,4 @@
-let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Im5ldyIsImV4cCI6MTUzNjUwNDA1MX0.9wvmqnqHIZpTdCo5UTxh273vFgAbZGxTBp0x4N_2o38"
+let token = localStorage.getItem("token");
 
 
 const uri = "https://kevin-diary-v2.herokuapp.com/api/v2/entries"
@@ -10,9 +10,9 @@ let req = new Request(uri,{
 });
 fetch(req).then((response) => {
     if(response.ok){
-        console.log(response);
+        return response.json()
     } }).then((jsondata) => {
-
+        console.log(jsondata[0].content);
     })
     .catch ((err)=> {
         console.log("error", err.message);
