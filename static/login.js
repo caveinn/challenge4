@@ -1,3 +1,4 @@
+localStorage.removeItem("token")
 buton = document.getElementById('loginbtn')
 document.getElementById("loginform").addEventListener("submit", function(e) {
 e.preventDefault(); });
@@ -24,8 +25,13 @@ buton.onclick = function(){
         console.log(res.json());
       })
       .then((data) => {
+        if(data){
         localStorage.setItem("token", data.token) ;
         window.location = "home.html";
+        }
+        else{
+          document.getElementById("message").innerHTML = "could not login";
+        }
 
       })
       // catch error that may occur
