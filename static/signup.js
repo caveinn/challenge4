@@ -20,17 +20,19 @@ buton.onclick = function(){
         },
         body: JSON.stringify(user)
       })
-      .then(res => res.json())
-
+      .then(res =>{ 
+        return res.json();
+      })
       .then(data => {
-        document.getElementById("message").innerHTML = data[0].message;
-        if (data.message === "Your account was created") {
-          let msg = data.message;
-          document.getElementById("message").innerHTML = msg;
-          window.location.href = "/login";
-        } else {
-          let msg = Object.values(data);
+        document.getElementById("message").innerHTML = data.message;
+        if (data[0].message == "user_created") {
+          let msg = data[0].message;
           console.log(msg)
+          document.getElementById("message").innerHTML = msg;
+          setTimeout(() => {document.getElementById("message").innerHTML = "";}, 5000);
+          window.location = "login.html";
+        } else {
+          let msg = data.message;
           document.getElementById("message").innerHTML = msg;
           setTimeout(() => {document.getElementById("message").innerHTML = "";}, 5000);
 
