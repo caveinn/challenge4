@@ -64,6 +64,7 @@ subm.onclick = () =>{
             console.log(response);
             if (response.ok){
             modal.style.display="none";
+            return response.json();
         }
         else{
             console.log(response.json());
