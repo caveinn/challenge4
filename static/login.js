@@ -21,6 +21,9 @@ buton.onclick = function(){
         if(res.ok){
           return res.json();
         }
+        else{
+          throw
+        }
       })
       .then((data) => {
         localStorage.setItem("token", data.token) ;
